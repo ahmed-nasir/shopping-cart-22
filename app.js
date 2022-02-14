@@ -22,11 +22,35 @@ function updateProductNumber(product, price, issPluss) {
 
     console.log('Total calculation is done!', productNumber);
 
+    // calculate Grand total
+    calculateGrandTotal()
+
 }
+
+// 
+function getInputValue(product) {
+    const productInput = document.getElementById(product + '-number');
+    const productNumber = parseInt(productInput.value);
+    return productNumber;
+}
+
 // calculate subtotal,tax & grand total
+function calculateGrandTotal() {
+
+    const phoneTotal = getInputValue('phone') * 1219;
+    const caseTotal = getInputValue('case') * 59;
+    const subtotal = phoneTotal + caseTotal;
+    const tax = subtotal / 10
+    const grandTotal = subtotal + tax;
+
+    // update on the html
+    document.getElementById('sub-total').innerText = subtotal;
+    document.getElementById('tax').innerText = tax;
+    document.getElementById('grand-total').innerText = grandTotal;
 
 
 
+}
 
 
 // Handle phone increase decrease events
