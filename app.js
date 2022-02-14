@@ -1,24 +1,33 @@
 function updateProductNumber(product, price, issPluss) {
     const productInput = document.getElementById(product + '-number');
-    let productNumber = document.getElementById(product + '-price');
-    const casePriceText = productNumber.innerText
-    const caseNumberText = productInput.value;
+    let caseNumberText = productInput.value;
+
     if (issPluss) {
-        const updateCaseNum = parseInt(caseNumberText) + 1;
-        productInput.value = updateCaseNum;
-        let casePriceNum = price * updateCaseNum;
-        productNumber.innerText = casePriceNum;
+        caseNumberText = parseInt(caseNumberText) + 1;
 
-
+        console.log('increasing calculation is doing here', caseNumberText);
     } else if (caseNumberText > 0) {
-        const updateCaseNum = parseInt(caseNumberText) - 1;
-        productInput.value = updateCaseNum;
+        caseNumberText = parseInt(caseNumberText) - 1;
 
-        let casePriceNum = parseInt(casePriceText) - price;
-        productNumber.innerText = casePriceNum;
+        console.log('decrise calculation is doing here', caseNumberText);
     }
+    productInput.value = caseNumberText;
+
+    // Product price
+    const productNumber = document.getElementById(product + '-price');
+    // calculate product price with product quantity & unit price
+    console.log('outsite of function')
+
+    productNumber.innerText = caseNumberText * price;
+
+    console.log('Total calculation is done!', productNumber);
 
 }
+// calculate subtotal,tax & grand total
+
+
+
+
 
 // Handle phone increase decrease events
 
